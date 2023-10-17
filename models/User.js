@@ -10,7 +10,8 @@ const UserSchema = mongoose.Schema({
     contact : String,
     city : String,
     gender : String,
-    state : String
+    state : String,
+    status : {type : Number, default : 1}
     
 })
 

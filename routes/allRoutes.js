@@ -8,6 +8,7 @@ routes.use("/api/category", require("../controllers/CategoryController"));
 routes.use("/api/product", require("../controllers/ProductController"));
 routes.use("/api/userauth", require("../controllers/UserAuthController"));
 routes.use("/api/adminauth", require("../controllers/AdminAuthController"));
+routes.use("/api/users", require("../controllers/UserController"));
 
 // localhost:8080/api/city
 

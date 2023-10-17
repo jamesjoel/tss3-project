@@ -10,14 +10,19 @@ routes.post("/", async(req, res)=>{
     let result = await User.find({ email : u });
     if(result.length > 0) // that means username/email is correct
     {
-        if(result[0].password == sha1(p))
+        if(result[0].password == sha1(p)) 
         {
-            let userobj = { id : result[0]._id };
-            let token = jwt.sign(userobj, "hello");
-            console.log(token);
-            res.send({ success : true, token : token, name : result[0].name, email : result[0].email }) 
+            if(result[0].status==1)
+            {
+                let userobj = { id : result[0]._id };
+                let token = jwt.sign(userobj, "hello");
+                
+                res.send({ success : true, token : token, name : result[0].name, email : result[0].email }) 
+            }else{
+                res.send({ success : false, type : 3 }) 
+            }
         }
-        else{
+        else{ // username correct but pass incorect
             res.send({ success : false, type : 2 }) 
         }
     }
